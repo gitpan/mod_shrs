@@ -1,0 +1,295 @@
+<HTML><HEAD><TITLE>Filter Form</TITLE>
+
+
+</HEAD><BODY BORDER=0>
+
+<FORM name=filter >
+<table border=0 cellpadding=0 cellspacing=0 width='100%' align=left>
+
+<tr><td colspan=6 >&nbsp;</td></tr>
+<tr><td colspan=6 align=center>Filter Form</td></tr>
+<tr><td colspan=6 >&nbsp;</td></tr>
+
+<tr bgcolor='#d3d3d3' > 
+<td colspan=4 >
+<input type=button value=Cancel tabindex=1 name=cancel onClick='JavaScript:document.filterform.cancel();' >
+<input type=button value=Save tabindex=2 name=SAVE onClick='JavaScript:if(validateForm(document.editform,document.filterform)) document.filterform.submit();'>
+<input type=button value='Log Out' tabindex=3 name=LOGOUT onClick='JavaScript:exitApp(document.editform)' >
+<input type=button value='Main' tabindex=4 name=main >
+<input type=button value='Summary' tabindex=5 name=filter >
+<input type=button value='Report' tabindex=6 name=report >
+</td>
+
+<td colspan=2 align=right valign=top >Logged in as:<br><a href='mailto:'></a></td>
+</tr>
+
+<tr><td colspan=6 >&nbsp;</td></tr>
+
+<!-- Stored Querys -->
+
+<tr>
+<td colspan=2 >
+Stored Querys&nbsp;&nbsp;
+<select name=stored_query >
+<OPTION value=0 >Empty</OPTION>
+</select>
+</td>
+<td colspan=4>
+<input type=button value='Apply' tabindex=6 name=report >
+<input type=button value='Save' tabindex=6 name=report >
+<input type=button value='Delete' tabindex=6 name=report >
+</td>
+</tr>
+
+<tr><td colspan=6 >&nbsp;</td></tr>
+
+<!-- RECORDS BY WORD SEARCH  -->
+
+<TR>
+<TD colspan=1 >
+<INPUT type=checkbox >&nbsp;&nbsp;Word Search</INPUT></TD>
+<TD colspan=5 ><INPUT type=text size=68 name=search ></INPUT></TD>
+</TR>
+
+<TR>
+<TD colspan=1 >&nbsp;</TD>
+<TD colspan=5 >
+<INPUT type=checkbox >&nbsp;&nbsp;Title&nbsp;&nbsp;
+<INPUT type=checkbox >&nbsp;&nbsp;Description Of Request
+<INPUT type=checkbox >&nbsp;&nbsp;Description Of Verification
+<INPUT type=checkbox >&nbsp;&nbsp;Description Of Resolution
+<INPUT type=checkbox >&nbsp;&nbsp; Log
+</TD>
+</TR>
+
+<tr><td colspan=6 >&nbsp;</td></tr>
+
+<!-- RECORDS BY RECORD NUMBERS -->
+<TR>
+<TD colspan=2 ><INPUT type=checkbox >&nbsp;&nbsp;Comma Delimited List of Request Numbers</TD>
+<TD colspan=4 ><INPUT type=text size=68 name=record_nums ></INPUT></TD>
+</TR>
+
+<TR>
+<TD colspan=2 ><INPUT type=checkbox >&nbsp;&nbsp;Range of Request Numbers</INPUT></TD>
+<TD colspan=2 >
+&nbsp;&nbsp;FROM&nbsp;&nbsp;
+<INPUT type=text name=record_num_from ></INPUT></TD>
+<TD colspan=2 >
+&nbsp;&nbsp;TO&nbsp;&nbsp;
+<INPUT type=text name=record_num_to ></INPUT></TD>
+</TR>
+
+<tr><td colspan=6 >&nbsp;</td></tr>
+
+<!-- DATES -->
+<tr>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Date Submitted</INPUT></TD>
+
+<TD colspan=2 >
+Before&nbsp;&nbsp;
+<SELECT name=month >
+<OPTION value=1  >12</OPTION>
+</SELECT >
+<SELECT name=day >
+<OPTION value=1  >31</OPTION>
+</SELECT >
+<SELECT name=year >
+<OPTION value=1  >2002</OPTION>
+</SELECT >
+</TD>
+
+<TD colspan=3 >
+After&nbsp;&nbsp;
+<SELECT name=month >
+<OPTION value=1  >12</OPTION>
+</SELECT >
+<SELECT name=day >
+<OPTION value=1  >31</OPTION>
+</SELECT >
+<SELECT name=year >
+<OPTION value=1  >2002</OPTION>
+</SELECT >
+</TD>
+</tr>
+
+
+<!--
+<TD colspan=2 >Last Modified</TD>
+<TD colspan=2 >Release</TD>
+-->
+
+<TR><TD colspan=6 >&nbsp;</TD></TR>
+
+<TR>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Status</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Severities</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Priorities</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Affects Docs</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Reproducibility</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Feature</INPUT></TD>
+</TR>
+
+
+<TR>
+<TD colspan=1 valign=top > 
+<SELECT multiple name=severity_oid >
+<OPTION value= >New</OPTION>
+<OPTION value= >Open</OPTION>
+<OPTION value= >Assigned</OPTION>
+<OPTION value= >Fixed</OPTION>
+<OPTION value= >In Test</OPTION>
+<OPTION value= >Verified</OPTION>
+<OPTION value= >Request Info</OPTION>
+<OPTION value= >Declined</OPTION>
+<OPTION value= >Withdrawn</OPTION>
+<OPTION value= >Closed</OPTION>
+</SELECT></TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=severity_oid >
+<OPTION value=1 >Unspecified</OPTION>
+<OPTION value=2 >Fatal</OPTION>
+<OPTION value=3 >High</OPTION>
+<OPTION value=4 >Medium</OPTION>
+<OPTION value=5 >Low</OPTION>
+<OPTION value=6 >Dont Know</OPTION>
+</SELECT>
+</TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=priority_oid >
+<OPTION value=1 >Unspecified</OPTION>
+<OPTION value=2 >Critical</OPTION>
+<OPTION value=3 >High</OPTION>
+<OPTION value=4 >Medium</OPTION>
+<OPTION value=5 >Low</OPTION>
+</SELECT>
+</TD>
+
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=affects_docs_oid >
+<OPTION value=1 >Unspecified</OPTION>
+<OPTION value=2 >No</OPTION>
+<OPTION value=3 >Yes</OPTION>
+<OPTION value=4 >Don't Know</OPTION>
+</SELECT>
+</TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=reproducibility_oid >
+<OPTION value=1 >Unspecified</OPTION>
+<OPTION value=2 >Everytime</OPTION>
+<OPTION value=3 >Sometimes</OPTION>
+<OPTION value=4 >Rarely</OPTION>
+<OPTION value=5 >Once</OPTION>
+<OPTION value=6 >New Feature</OPTION>
+</SELECT>
+</TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=is_new_feature >
+<OPTION value=1 >Unspecified</OPTION>
+<OPTION value=2 >Defect</OPTION>
+<OPTION value=3 >New Feature</OPTION>
+</SELECT></TD>
+</tr>
+
+
+<tr><td colspan=6 >&nbsp;</td></tr>
+
+
+<tr>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Components</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Comp Types</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Products</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Platforms</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Finding Activities</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Finding Modes</INPUT></TD>
+</tr>
+
+
+<TR >
+<TD colspan=1 valign=top > 
+<SELECT multiple name=component_oid >
+<OPTION value=1  >Unspecified</OPTION>
+</SELECT ></TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=comp_type_oid >
+<OPTION value=1  >Unspecified</OPTION>
+</SELECT ></TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=product_id_oid >
+<OPTION value=1  >Unspecified</OPTION>
+</SELECT ></TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=platform_oid >
+<OPTION value=1  >Unspecified</OPTION>
+</SELECT ></TD>
+
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=finding_act_oid >
+<OPTION value=1  >Unspecified</OPTION>
+</SELECT ></TD>
+
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=finding_mode_oid >
+<OPTION value=1 >Unspecified</OPTION>
+<OPTION value=2 >Dynamic</OPTION>
+<OPTION value=3 >Static</OPTION>
+</SELECT>
+</TD>
+
+<tr>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Originators</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Resoltions</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Submitter</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Assigned To</INPUT></TD>
+<TD colspan=1 ><INPUT type=checkbox >&nbsp;&nbsp;Verified By</INPUT></TD>
+<TD colspan=2 >&nbsp;</TD>
+</tr>
+
+<tr><td colspan=6 >&nbsp;</td></tr>
+
+<TR >
+<TD colspan=1 valign=top > 
+<SELECT multiple name=originator_oid >
+<OPTION value=1  >Unspecified</OPTION>
+</SELECT ></TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=resolution_oid >
+<OPTION value=1  >Unspecified</OPTION>
+</SELECT ></TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=submitter_oid >
+<OPTION value=1 >Unspecified</OPTION>
+</SELECT ></TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=assigned_to_oid >
+<OPTION value=1 >Unspecified</OPTION>
+</SELECT ></TD>
+
+<TD colspan=1 valign=top > 
+<SELECT multiple name=verified_by_oid >
+<OPTION value=1 >Unspecified</OPTION>
+</SELECT ></TD>
+
+<TD colspan=2 >&nbsp;</TD>
+</TR>
+
+
+</TABLE>
+</FORM>
+</BODY>
+</HTML>
+
+

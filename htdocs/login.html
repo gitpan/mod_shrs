@@ -1,0 +1,77 @@
+
+<html><head>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<link REL="StyleSheet" type="text/css" HREF="style1.css">
+
+
+<script language="Javascript">
+
+function Verify() {
+  with(document.loginform) {
+    if ( login.value == "" )  {
+      alert("Please, enter your login name.");
+      return false;
+    }
+
+    if ( password.value == "" )  {
+      alert("Please, enter your password.");
+      return false;
+    }
+  }
+  return true;
+}
+
+</script>
+</head>
+<body onLoad="document.loginform.login.focus();" >
+<center>
+
+<br><br>
+
+<form name="loginform" action="/shrs" method="post" onsubmit="return Verify();">
+
+<table class=login align="center">
+<tr><td align=left ><img src="site.bmp"></td></tr>
+
+<tr><td>&nbsp;
+
+</td></tr><tr>
+<td><table class="loginform" > 
+<tr><td class=header1 colspan="2" align=center >
+The Software/Hardware Request System
+</td></tr>
+
+<tr><td>&nbsp;</td></tr>
+
+<tr>
+<td align="left" width="30%">Account</td>
+<td width="50%"><input class=a type="text" tabindex=1 name="login" value="guest" size="25"></td>
+</tr>
+
+<tr>
+<td align="left" width="30%" >Password</td>
+<td><input class=a type="password" tabindex=2 name="password" value="password" size="25"></td>
+</tr>
+
+<tr><td>&nbsp;</td><td>
+<input type="submit" name="login" value="Login" tabindex=3 >
+<input type="reset"  name="reset" value="Reset" tabindex=4 >
+</td></tr>
+
+<tr><td>&nbsp;</td></tr>
+</table></td></tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td class=copyright >
+Property of John Atkins <br>Copyright &copy; All rights reserved.<br>
+ </td>
+</TR>
+</table>
+</form>
+</center>
+</body>
+</html>

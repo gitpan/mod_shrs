@@ -1,0 +1,158 @@
+November 28, 2002
+
+	The Software Hardware Request System (SHRS)
+		(An apache module written in C) 
+			Version 0.0
+		    By John D. Atkins
+
+What Is It?
+-----------
+   SHRS is quality control managemnet tool for tracking the 
+   cycle (status) of requests for new features or defects in 
+   software/hardware products.  As the request moves through
+   the cycle the appropriate parties are notified by email
+   of a change in status.  
+
+   This module is far from complete.  It's curretnly 
+   offered only as a C coding example.  Please, be warned, 
+   I'm completely new to the unix-like platforms.
+   I started learning the unix-like platform as of March of 2002. 
+   This is also my first web project so I welcome advice. Thanks.
+
+   You don't need to install this module to get an idea of
+   what it is.  The following sample static views of the system 
+   are available in the "views" directory of the package: 
+      main_menu.htm
+      submit_form_pg1.htm
+        submit_form_pg2.htm
+        submit_form_pg3.htm
+      request_record.htm
+        process_form.htm
+        viewonly_process_form.htm
+      summary_form.htm
+      admin_menu.htm
+        system_menu.htm
+
+   Submitting a request requires moving through three forms. 
+   Because only  management may add products, components, and
+   component revisions, the submitter is forced to select these 
+   required entry items first.  If an item is missing 
+   and needs to be added by management, then the submitter 
+   will discover this before completing the entire form. 
+
+   The process_form.htm sample shows the view of a newly created
+   record that the user may edit.  The viewonly_process_form.htm
+   sample shows the read only view available to a user without
+   sufficient permissions to change edit fields.  Whether a control
+   or text is displayed depends on the status of the request and
+   the permissions of the user.  
+
+   Also see the shrs_help.html in the htdocs directory of this 
+   package. It contains some additional information, but I'm 
+   not finished with it yet either.
+
+A Couple Notes Abount The Code
+------------------------------
+  db_shrs.h/c wraps the backend.  Recordsets are copied to
+  a two dimentional zero based array that is used in place 
+  of the postgresql recordset.  See twodim.h/c.  
+
+  shrs.c contains the main case statement that acts on a hidden
+  form input called form_action that is present in every web page.  
+  This avoids having to enter a configuration statement in 
+  the apache configuration file for each web page.  It also
+  allows changing the next form action with jscript. 
+
+  Almost every web page is composed of a table and two forms.
+  The first form containing a table is displayed and the second 
+  form is hidden.  The second form is used to process a canceled 
+  operation, where only the user's session id and the next
+  form action needs to be returned to the server.  
+
+The Latest Version
+------------------
+  The latest version can be found at cpan. 
+
+Installation
+------------
+   Installation is performed manually.
+
+   I used the following packages on OpenBSD and Red Hat:
+      apache_1.3.24.tar.gz 
+      postgresql-7.2.1.tar.gz
+      openssl-0.9.6c.tar.gz (Optional)
+
+   Note: this won't run on apache 2.x because of 
+   apache's new design (new header files).
+
+   Install postgresql with the libpq libraries.
+   Not all ports install these libraries.
+
+   Using the psql command line interface create 
+   a database called "shrs" and add a postgres user
+   named www or the user the apache server runs as.  
+   In turn, execute the scripts in the sqls directory.  
+   First execute the create_shrs_tables.sql, then 
+   insert_shrs_data.sql, and then the www_grant.sql 
+   batch files.   Be sure to change who the www_grant.sql 
+   grants permissions if your web server doesn't run
+   as www.  
+
+   In turn, update the Makefile and change the include statement 
+   to point to libpg and change the name of the apache control 
+   startup to whatever you have.
+   
+   Add the following to your apache config file:  
+
+      # Dynamic Shared Object (DSO) Support
+      # Example:
+      # LoadModule foo_module libexec/mod_foo.so
+      LoadFile 		/usr/local/lib/libpq.so
+      LoadModule jda_module   /usr/lib/apache/modules/mod_jda.so
+      
+      <Location /shrs>
+         SetHandler shrs-handler
+      </Location> 
+
+   Note: LoadFile is probably not need on a linux system.
+ 
+   In turn, copy the login.html and shrs_help.html files
+   to your document root.
+   
+   Note: on OpenBSD I was not able to create two seperate
+   C modules using the same libpq.  The module specified
+   first in the apache config file would load and the second
+   would fail.
+
+Licensing
+---------
+   Please read the file LICENSE.
+
+Documentation
+-------------
+   An administrator and users guide will be available
+   at date not yet determined.  I'm really busy, sorry.
+
+Suggested Reading
+-----------------
+
+   "Writing Apache Modules with Perl and C" 
+   by Lincoln Stein & Doug MacEachern, 
+   published by O'Reilly.
+   
+   "Professional Apache" 
+   by Peter Wainwright
+   published by Wrox 
+
+Acknowledgments
+---------------
+  My mother, father, and brothers.  
+
+Biggest To Do
+--------------
+Document the code!!! 
+Provide supporting administrative and user documentation.
+Add a sql filter.
+Add printable reports.
+Rewrite the menu functions.
+Provide an openldap backend and kerberos/cyrus authentication.

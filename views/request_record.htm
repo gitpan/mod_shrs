@@ -1,0 +1,9 @@
+<html><head><title>www.johnatkins.net</title><script language="JavaScript" > <!--// 
+
+function openHelp(strHelpTopic) {
+   var wndHelp;
+   var path = '/shrs_help.html#' + strHelpTopic;
+   wndHelp = window.open( path ,'', 'height=200, width=300, alwaysRaised=yes, scrollbars=yes');
+}
+
+ //--> </script></head><body><form name="shrs" action="/shrs" method="post" ><table width="60%" border=0 cellpadding=0 cellspacing=0 align=left><tr ><td colspan="6" >&nbsp;</td></tr><tr ><td colspan="6" align=center ><strong>Record Request</strong></td></tr><tr ><td colspan="6" >&nbsp;</td></tr><tr bgcolor="#d3d3d3" ><td colspan=6 align=right >&nbsp;<input type=button value="&nbsp;Open&nbsp;" onclick=document.forms['shrs'].submit(); >&nbsp;</input>&nbsp;<input type=button value="&nbsp;Cancel&nbsp;" onclick=document.forms['cancel'].submit(); >&nbsp;</input></td></tr><tr><td colspan=6 >&nbsp;</td></tr><tr><td colspan=6 align=center>&nbsp;Enter a Record Number:&nbsp;<input type=text tabindex=1 maxlength=8  name='requested_oid' ></input></td></tr></table><input type=hidden name=formaction value=6 ></input> <input type=hidden name=sid value=716e343b2c96c61966798797001cb7ec ></input> </form><form name=cancel action="shrs"  method=post ><input type=hidden name=formaction value=0 ></input> <input type=hidden name=sid value=716e343b2c96c61966798797001cb7ec ></input> </form></body></html>

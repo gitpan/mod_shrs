@@ -1,0 +1,9 @@
+# Dynamic Shared Object (DSO) Support
+# Example:
+# LoadModule foo_module libexec/mod_foo.so
+LoadFile 		/usr/local/lib/libpq.so
+LoadModule jda_module   /usr/lib/apache/modules/mod_jda.so
+
+<Location /shrs>
+   SetHandler shrs-handler
+</Location> 

@@ -1,0 +1,244 @@
+
+
+<!--
+
+requests
+   request_oid,
+   new_feature,
+   request_type_oid,
+   submitter_oid,
+   assigned_to_oid,
+   verified_by_oid,
+   user_lock,
+   timelock,
+   status,
+   severity,
+   priority,
+   reproducibility,
+   platform_oid,
+   product_id_oid,
+   originator_oid,
+   component_oid,
+   comp_rev_oid,
+   fixed_in_comp_rev_oid,
+   finding_act_oid,
+   finding_mode,
+   marketing_rev_oid,
+   release_date,
+   level_of_effort,
+   pam_release_oid,
+   affects_docs_oid,
+   date_submitted,
+   last_modified,
+   resolution_oid,
+   *resolution,
+   title[255],
+   *request,
+   *verification
+
+select comp_type_oid, comp_type from component_types;
+select component_oid, component, comp_type_oid from components;
+select comp_rev_oid, comp_rev from component_revisions;
+select finding_act_oid, finding_activity from finding_activities;
+select marketing_rev_oid, marketing_rev from marketing_revisions;
+select originator_oid, originator from originators;
+select pam_release_oid, pam_release from pam_releases;
+select platform_oid, platform from platforms;
+select product_id_oid, product_id from product_ids;
+select resolution_oid, resolution from resolutions;
+
+select 
+   user_oid, 
+   user_account, 
+   last_name, 
+   first_name, 
+   initials, 
+   email_address, 
+   is_qa_mgr, 
+   is_comp_mgr, 
+   is_sup_comp_mgr 
+   from users;
+
+select request_type_oid, request_type from request_types;
+
+select
+   request_oid,
+   new_feature,
+   request_type_oid,
+   submitter_oid,
+   assigned_to_oid,
+   verified_by_oid,
+   user_lock,
+   timelock,
+   status,
+   severity,
+   priority,
+   reproducibility,
+   platform_oid,
+   product_id_oid,
+   originator_oid,
+   component_oid,
+   comp_rev_oid,
+   fixed_in_comp_rev_oid,
+   finding_act_oid,
+   finding_mode,
+   marketing_rev_oid,
+   release_date,
+   level_of_effort,
+   pam_release_oid,
+   affects_docs_oid,
+   date_submitted,
+   last_modified,
+   resolution_oid,
+   resolution,
+   title,
+   request,
+   verification
+   from requests;
+
+select request_oid, user_oid, status, ts,
+from status_history;
+
+select 
+   comment_oid, 
+   request_oid, 
+   user_oid, 
+   comments, 
+   ts, 
+   saved 
+   from comments;
+
+select 
+   error_oid, 
+   error_no, 
+   error_msg, 
+   location, 
+   user_oid, 
+   comments, 
+   ts 
+   from errors;
+
+component_types;
+components;
+component_revisions;
+finding_activities;
+marketing_revisions;
+originators;
+pam_releases;
+platforms;
+product_ids;
+resolutions;
+users;
+requests;
+comments;
+errors;
+status_history;
+
+	'Unspecified', 
+	'Fatal', 
+	'High', 
+	'Medium', 
+	'Low', 
+	'Dont Know'
+
+	'Unspecified', 
+	'Critical', 
+	'High', 
+	'Medium', 
+	'Low'
+
+	'Unspecified', 
+	'Dynamic', 
+	'Static'
+
+	'Unspecified', 
+	'No', 
+	'Yes', 
+	'Don't Know'
+
+	'Unspecified', 
+	'Everytime', 
+	'Sometimes', 
+	'Rarely', 
+	'Once', 
+	'New Feature'
+
+	'Unspecified', 
+	'Defect', 
+	'New Feature'
+
+#define STATE_NEW		0
+#define STATE_OPEN		1
+#define STATE_ASSIGNED		2
+#define STATE_FIXED		3
+#define STATE_IN_TEST		4
+#define STATE_VERIFIED		5
+#define STATE_REQUEST_INFO	6
+#define STATE_DECLINED		7
+#define STATE_WITHDRAWN		8
+#define STATE_CLOSED		9
+
+
+
+	{ 'New', 		state_new },
+	{ 'Open', 		state_open },
+	{ 'Assigned', 		state_assigned },
+	{ 'Fixed', 		state_fixed },
+	{ 'In Test', 		state_in_test },
+	{ 'Verified', 		state_verified },
+	{ 'Request Info', 	state_request_info },
+	{ 'Declined', 		state_declined },
+	{ 'Withdrawn', 		state_withdrawn },
+	{ 'Closed', 		state_closed }
+
+
+#define COMP_TYPES	0
+#define COMPONENTS	1 
+#define COMP_REVS	2
+#define FINDING_ACTS	3
+#define MARKETING_REVS	4
+#define ORIGINATORS	5
+#define PAM_RELEASES	6
+#define PLATFORMS	7
+#define PRODUCT_IDS	8
+#define RESOLUTIONS	9
+#define USERS		10
+
+#define SQL_COMP_TYPES 'select comp_type_oid, comp_type from component_types;',
+#define SQL_COMPONENTS 'select component_oid, component from components;',
+#define SQL_COMP_REVS 'select comp_rev_oid, comp_rev from component_revisions;',
+#define SQL_FINDING_ACTS 'select finding_act_oid, finding_activity from finding_activities;',
+#define SQL_MARKETING_REVS 'select marketing_rev_oid, marketing_rev from marketing_revisions;',
+#define SQL_ORIGINATORS	'select originator_oid, originator from originators;',
+#define SQL_PAM_RELEASES 'select pam_release_oid, pam_release from pam_releases;',
+#define SQL_PLATFORMS 'select platform_oid, platform from platforms;',
+#define SQL_PRODUCT_IDS	'select product_id_oid, product_id from product_ids;',
+#define SQL_RESOLUTIONS	'select resolution_oid, resolution from resolutions;',
+
+
+   'select comp_type_oid, comp_type from component_types;',
+   'select component_oid, component from components;',
+   'select comp_rev_oid, comp_rev from component_revisions;',
+   'select finding_act_oid, finding_activity from finding_activities;',
+   'select marketing_rev_oid, marketing_rev from marketing_revisions;',
+   'select originator_oid, originator from originators;',
+   'select pam_release_oid, pam_release from pam_releases;',
+   'select platform_oid, platform from platforms;',
+   'select product_id_oid, product_id from product_ids;',
+   'select resolution_oid, resolution from resolutions;',
+   'select * from users;'
+
+   'select comp_type from component_types;',
+   'select component from components;',
+   'select comp_rev from component_revisions;',
+   'select finding_activity from finding_activities;',
+   'select marketing_rev from marketing_revisions;',
+   'select originator from originators;',
+   'select pam_release from pam_releases;',
+   'select platform from platforms;',
+   'select product_id from product_ids;',
+   'select resolution from resolutions;',
+   'select * from users;'
+
+
+-->
